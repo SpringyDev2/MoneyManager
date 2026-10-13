@@ -1,0 +1,59 @@
+<Page x:Class="MoneyManager.ActionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      Background="Transparent">
+    <Grid Background="Transparent">
+        <Border Margin="20" Background="#2A2A3B" CornerRadius="16" Padding="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="4" Color="#111118" Opacity="0.5"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Actions &amp; Analytics" FontSize="24" FontWeight="Bold" Foreground="White" Margin="0,0,0,10"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="320" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Margin="0,0,15,0">
+                        <TextBlock Text="This page shows actions and stats. For quick add and recent activity, go to Balance." Foreground="#CFCFE0" TextWrapping="Wrap" />
+
+                        <Border Background="#23232F" CornerRadius="10" Padding="14" Margin="0,15,0,0">
+                            <StackPanel>
+                                <TextBlock Text="Tips" FontWeight="Bold" Foreground="#E6E6F0" />
+                                <TextBlock Text="• Use Add Expense to categorize spending for better reports." Foreground="#BDBDD0" FontSize="12" Margin="0,6,0,0" TextWrapping="Wrap"/>
+                                <TextBlock Text="• Add recurring income so forecasts stay accurate." Foreground="#BDBDD0" FontSize="12" Margin="0,4,0,0" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                        <TextBlock Text="Expense Breakdown" FontSize="16" FontWeight="Bold" Foreground="White" Margin="0,0,0,8" />
+                        <Border Background="#1E1E2F" CornerRadius="12" Padding="12" Height="210">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="130"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Canvas x:Name="PieChartCanvas" Width="120" Height="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" x:Name="ChartLegendPanel"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

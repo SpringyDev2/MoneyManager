@@ -1,0 +1,128 @@
+﻿<Page x:Class="MoneyManager.Transactions"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MoneyManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Transactions">
+
+    <Page.Resources>
+        <Style x:Key="FormButton" TargetType="Button">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="50,0,10,10"/>
+            <Setter Property="Background" Value="#2D89EF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#1E1E2F">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#2A2A40"
+            CornerRadius="20"
+            Margin="25"
+            Padding="20">
+
+            <StackPanel>
+
+                <!-- Title -->
+                <TextBlock Text="Transactions"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Margin="10,0,0,25"/>
+
+                <!-- DataGrid -->
+                <DataGrid x:Name="TransactionsGrid"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      IsReadOnly="True"
+                      Background="#2A2A40"
+                      BorderThickness="0"
+                      Foreground="White"
+                      RowBackground="#34344A"
+                      AlternatingRowBackground="#3D3D55"
+                      GridLinesVisibility="None"
+                      ColumnHeaderHeight="60"
+                      RowHeight="65"
+                      CanUserResizeColumns="False"
+                      CanUserResizeRows="False"
+                      CanUserAddRows="False"
+                      SelectionMode="Single">
+                    <!-- ===== STYLES ===== -->
+                    <DataGrid.Resources>
+
+                        <!-- Column Headers -->
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#337ab7"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Padding" Value="15"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        </Style>
+
+                        <!-- Cells -->
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="FontSize" Value="17"/>
+                            <Setter Property="Padding" Value="10"/>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        </Style>
+
+                        <!-- Rows -->
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Height" Value="65"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                        </Style>
+
+                        <!-- Text inside columns -->
+                        <Style x:Key="CenteredTextStyle" TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="TextAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="17"/>
+                        </Style>
+
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Amount"
+                                            Binding="{Binding Amount, StringFormat={}{0:N2}}"
+                                            Width="1.5*"
+                                            ElementStyle="{StaticResource CenteredTextStyle}"/>
+                        <DataGridTextColumn Header="Date"
+                                            Binding="{Binding Date, StringFormat={}{0:g}}"
+                                            Width="*"
+                                            ElementStyle="{StaticResource CenteredTextStyle}"/>
+                        <DataGridTextColumn Header="Category"
+                                            Binding="{Binding Category}"
+                                            Width="*"
+                                            ElementStyle="{StaticResource CenteredTextStyle}"/>
+                        <DataGridTextColumn Header="Currency"
+                                            Binding="{Binding Currencyid}"
+                                            Width="1.5*"
+                                            ElementStyle="{StaticResource CenteredTextStyle}"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</Page>

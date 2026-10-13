@@ -1,0 +1,117 @@
+﻿<Page x:Class="MoneyManager.Balance"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MoneyManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Balance">
+
+    <Grid Background="#1E1E2F">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left: Balance at top and buttons in a row below it -->
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+
+            <!-- Balance card at the top-left -->
+            <Border Grid.Row="0" Background="#2563EB" CornerRadius="16" Padding="22" Width="420" Margin="40,24,0,12" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Text="Current balance" Foreground="#E8F0FF" FontSize="14" FontWeight="SemiBold" />
+                    <TextBlock Text="₪ 24,680.50" Foreground="White" FontSize="44" FontWeight="Bold" Margin="0,10,0,0" />
+                    <TextBlock Text="Updated: Today" Foreground="#C7D5FF" FontSize="12" Margin="0,8,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- Buttons in a single row below the balance -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="40,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Width="180" Height="48" Background="#337ab7" Foreground="White" BorderThickness="0" Margin="0,0,12,0" Click="AddIncomeBtn">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="Add Income" FontWeight="SemiBold" HorizontalAlignment="Center" />
+                </Button>
+
+                <Button Width="180" Height="48" Background="#f04c4c" Foreground="White" BorderThickness="0" Click="AddExpenseBtn">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="8">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Text="Add Expense" FontWeight="SemiBold" HorizontalAlignment="Center" />
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Right: Transactions table with Date column -->
+        <Border Grid.Column="1" Margin="24" Background="#222230" CornerRadius="12" Padding="14">
+            <StackPanel>
+                <TextBlock Text="Previous transactions" FontSize="18" FontWeight="Bold" Foreground="White" Margin="0,0,0,12" />
+
+                <!-- Table header -->
+                <Grid Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Date" Foreground="#AEB0C8" FontWeight="SemiBold" />
+                    <TextBlock Grid.Column="1" Text="Description" Foreground="#AEB0C8" FontWeight="SemiBold" />
+                    <TextBlock Grid.Column="2" Text="Amount" Foreground="#AEB0C8" FontWeight="SemiBold" TextAlignment="Right" />
+                </Grid>
+
+                <ScrollViewer Height="320" VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <!-- sample rows -->
+                        <Grid Margin="0,6,0,6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="2026-09-10" Foreground="#EDEDEF" />
+                            <TextBlock Grid.Column="1" Text="Paycheck" Foreground="#EDEDEF" />
+                            <TextBlock Grid.Column="2" Text="+ ₪ 2,500" Foreground="#8CE28C" TextAlignment="Right" />
+                        </Grid>
+
+                        <Grid Margin="0,6,0,6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="2026-09-08" Foreground="#EDEDEF" />
+                            <TextBlock Grid.Column="1" Text="Groceries" Foreground="#EDEDEF" />
+                            <TextBlock Grid.Column="2" Text="- ₪ 76.40" Foreground="#FFB3B3" TextAlignment="Right" />
+                        </Grid>
+
+                        <Grid Margin="0,6,0,6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="2026-09-05" Foreground="#EDEDEF" />
+                            <TextBlock Grid.Column="1" Text="Internet bill" Foreground="#EDEDEF" />
+                            <TextBlock Grid.Column="2" Text="- ₪ 49.99" Foreground="#FFB3B3" TextAlignment="Right" />
+                        </Grid>
+                        <!-- more rows can be added here -->
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

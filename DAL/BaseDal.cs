@@ -19,14 +19,17 @@ namespace DAL
 
         public BaseDal()
         {
-            string ConnectionString =
-            @"Data Source=(LocalDB)\MSSQLLocalDB;
-              AttachDbFilename=D:\Collaborative project combined\MoneyManager\DAL\DatabaseMM.mdf;
-              Integrated Security=True;
-              Connect Timeout=30;
-              MultipleActiveResultSets=True;
-              ConnectRetryCount=3;
-              ConnectRetryInterval=10;";
+            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DAL", "DatabaseMM.mdf");
+            ConnectionString = new SqlConnectionStringBuilder
+            {
+                DataSource = @"(LocalDB)\MSSQLLocalDB",
+                AttachDBFilename = databasePath,
+                IntegratedSecurity = true,
+                ConnectTimeout = 30,
+                MultipleActiveResultSets = true,
+                ConnectRetryCount = 3,
+                ConnectRetryInterval = 10
+            }.ConnectionString;
             conn = new SqlConnection(ConnectionString);
         }
 

@@ -35,7 +35,7 @@ namespace MoneyManager
             //TransactionsGrid.DataContext = transactions;
             //  List<Transaction> transactions = DAL.GetTransaction(23232);
 
-            TransactionsGrid.ItemsSource = new MMDal().GetTransactions(4);
+            TransactionsGrid.ItemsSource = new MMDal().GetTransactions(1);
 
         }
 

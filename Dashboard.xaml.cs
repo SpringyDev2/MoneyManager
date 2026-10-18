@@ -22,9 +22,10 @@ namespace MoneyManager
         public Dashboard(string username,string password)
         {
             InitializeComponent();
-            MainFrame.Navigate(new Balance());
             this.username = username;
             this.password = password;
+            MainFrame.Navigate(new Balance());
+
         }
         public string username { get; set; }
         public string password { get; set; }

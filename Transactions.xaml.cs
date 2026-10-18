@@ -25,18 +25,26 @@ namespace MoneyManager
         public Transactions()
         {
             InitializeComponent();
+            Loaded += Transactions_Loaded;
+        }
 
-            //List<Transaction> transactions = new List<Transaction>
-            //{
-            //     new Transaction() { Date = DateTime.Now, Currid = 1, Amount = 5000},
-            //     new Transaction() { Date = DateTime.Now, Currid = 1, Amount = 5000},
-            //     new Transaction() { Date = DateTime.Now, Currid = 1, Amount = 5000}
-            //};
-            //TransactionsGrid.DataContext = transactions;
-            //  List<Transaction> transactions = DAL.GetTransaction(23232);
+        private void Transactions_Loaded(object sender, RoutedEventArgs e)
+        {
+            PopulateGrid();
+        }
 
-            TransactionsGrid.ItemsSource = new MMDal().GetTransactions(1);
+        private void PopulateGrid()
+        {
+            MMDal dal = new MMDal();
 
+            Dashboard dashboard = Window.GetWindow(this) as Dashboard;
+
+            if (dashboard == null)
+                return;
+
+            int userId = dal.GetUserId(dashboard.username, dashboard.password);
+
+            TransactionsGrid.ItemsSource = dal.GetTransactions(userId);
         }
 
 

@@ -139,6 +139,14 @@ namespace MoneyManager.DAL
 
             return transactions;
         }
+        public void UpdateUser(int userId, string username, string password)
+        {
+            SqlCommand cmd = new SqlCommand("UPDATE Users SET Username=@username, Password=@password WHERE Id = @userId");
+            cmd.Parameters.AddWithValue("@userId",userId);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", password);
+            ExecuteUpdateQuery(cmd);
+        }
     }
 }
     

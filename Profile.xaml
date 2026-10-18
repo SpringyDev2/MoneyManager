@@ -68,15 +68,15 @@
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Password:" Style="{StaticResource FormLabel}"/>
 
             <TextBox Grid.Row="0" Grid.Column="1"
-                 Name="idBox"
+                 Name="UsernameBox"
                  HorizontalAlignment="Left"        
-                 Text="{Binding Id, Mode=TwoWay}"
+                 Text="{Binding Username, Mode=TwoWay}"
                  Style="{StaticResource FormTextBox}"/>
 
             <TextBox Grid.Row="1" Grid.Column="1"
-                 Name="phoneNumberBox"
+                 Name="PasswordBox"
                  HorizontalAlignment="Left"
-                 Text="{Binding PhoneNumber, Mode=TwoWay}"
+                 Text="{Binding Password, Mode=TwoWay}"
                  Style="{StaticResource FormTextBox}"/>
 
             <!-- BUTTONS -->

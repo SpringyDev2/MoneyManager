@@ -24,7 +24,7 @@ namespace MoneyManager
             InitializeComponent();
             this.username = username;
             this.password = password;
-            MainFrame.Navigate(new Balance());
+            MainFrame.Navigate(new BalancePage());
 
         }
         public string username { get; set; }
@@ -32,7 +32,7 @@ namespace MoneyManager
 
         private void LogoButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Balance());
+            MainFrame.Navigate(new BalancePage());
         }
 
         private void Profile_Btn_Click(object sender, RoutedEventArgs e)

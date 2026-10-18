@@ -48,14 +48,20 @@ namespace MoneyManager
 
         private void ConfirmChangesBtnClick(object sender, RoutedEventArgs e)
         {
-            //not secure
-            DateTime date = DateTime.Now;
-            double amount = double.Parse(amountBox.Text);
-            Dashboard dashboard = Window.GetWindow(this) as Dashboard;
-            int userId = dal.GetUserId(dashboard.username, dashboard.password);
-            int currencyId = currencyComboBox.SelectedIndex+1;
+            try
+            {
+                DateTime date = DateTime.Now;
+                double amount = double.Parse(amountBox.Text);
+                Dashboard dashboard = Window.GetWindow(this) as Dashboard;
+                int userId = dal.GetUserId(dashboard.username, dashboard.password);
+                int currencyId = currencyComboBox.SelectedIndex + 1;
 
-            dal.AddTransaction(userId,amount,date,currencyId);
+                dal.AddTransaction(userId, amount, date, currencyId);
+            }
+            catch
+            {
+                MessageBox.Show("Please enter valid data");
+            }
 
         }
     }
